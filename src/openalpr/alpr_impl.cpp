@@ -117,14 +117,14 @@ namespace alpr
     if (img.channels() > 2)
       cvtColor( img, grayImg, CV_BGR2GRAY );
     
-    // Prewarp the image and ROIs if configured]
+    // Prewarp(对安装倾斜了的摄像头进行预校正) the image and ROIs if configured]
     std::vector<cv::Rect> warpedRegionsOfInterest = regionsOfInterest;
     // Warp the image if prewarp is provided
     grayImg = prewarp->warpImage(grayImg);
     warpedRegionsOfInterest = prewarp->projectRects(regionsOfInterest, grayImg.cols, grayImg.rows, false);
 
     // Iterate through each country provided (typically just one)
-    // and aggregate the results if necessary
+    // and aggregate(聚合) the results if necessary
     ResultAggregator country_aggregator(MERGE_PICK_BEST, topN, config);
     for (unsigned int i = 0; i < config->loaded_countries.size(); i++)
     {
@@ -135,7 +135,7 @@ namespace alpr
       
       // Reapply analysis for each multiple analysis value set in the config,
       // make a minor imperceptible tweak to the input image each time
-      ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config);
+      ResultAggregator iter_aggregator(MERGE_COMBINE, topN, config);//等价于 ResultAggregator iter_aggregator = ResultAggregator(MERGE_COMBINE, topN, config);
       for (unsigned int iteration = 0; iteration < config->analysis_count; iteration++)
       {
         Mat iteration_image = iter_aggregator.applyImperceptibleChange(grayImg, iteration);

@@ -43,7 +43,7 @@ namespace alpr
   // Must delete this pointer in parent class
   void LicensePlateCandidate::recognize()
   {
-
+    //TODO: 编写函数isMultiline()
     pipeline_data->isMultiline = config->multiline;
 
 

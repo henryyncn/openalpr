@@ -41,7 +41,7 @@ namespace alpr
     std::ifstream ifs(filepath.c_str(), std::ios::binary|std::ios::ate);
     
     if (ifs)
-      {
+    {
       std::ifstream::pos_type pos = ifs.tellg();
 
       std::vector<char>  buffer(pos);

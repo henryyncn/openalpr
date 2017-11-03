@@ -59,20 +59,20 @@ namespace alpr
 
   class AlprRegionOfInterest
   {
-  public:
-    AlprRegionOfInterest();
-    AlprRegionOfInterest(int x, int y, int width, int height)
-    {
-      this->x = x;
-      this->y = y;
-      this->width = width;
-      this->height = height;
-    };
+    public:
+      AlprRegionOfInterest();
+      AlprRegionOfInterest(int x, int y, int width, int height)
+      {
+        this->x = x;
+        this->y = y;
+        this->width = width;
+        this->height = height;
+      };
 
-    int x;
-    int y;
-    int width;
-    int height;
+      int x;
+      int y;
+      int width;
+      int height;
   };
 
   class AlprPlateResult

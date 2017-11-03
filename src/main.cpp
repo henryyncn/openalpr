@@ -105,6 +105,7 @@ int main( int argc, const char** argv )
     seektoms = seekToMsArg.getValue();
     outputJson = jsonSwitch.getValue();
     debug_mode = debugSwitch.getValue();
+    //debug_mode = true;
     configFile = configFileArg.getValue();
     detectRegion = detectRegionSwitch.getValue();
     templatePattern = templatePatternArg.getValue();

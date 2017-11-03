@@ -127,7 +127,7 @@ extern "C" {
       nativeAlpr->setCountry(country);
     }
 
-  OPENALPR_EXPORT void setPrewarp(Alpr* nativeAlpr, char* cprewarp)
+  OPENALPR_EXPORT void setPrewarp(Alpr* nativeAlpr, char* cprewarp)//useless
     {
       // Convert strings from java to C++ and release resources
       std::string prewarp(cprewarp);
@@ -135,7 +135,7 @@ extern "C" {
       nativeAlpr->setPrewarp(prewarp);
     }
 
-  OPENALPR_EXPORT void setDefaultRegion(Alpr* nativeAlpr, char* cdefault_region)
+  OPENALPR_EXPORT void setDefaultRegion(Alpr* nativeAlpr, char* cdefault_region)//useless
     {
       // Convert strings from java to C++ and release resources
       std::string default_region(cdefault_region);
@@ -143,7 +143,7 @@ extern "C" {
       nativeAlpr->setDefaultRegion(default_region);
     }
 
-  OPENALPR_EXPORT void setDetectRegion(Alpr* nativeAlpr, bool detect_region)
+  OPENALPR_EXPORT void setDetectRegion(Alpr* nativeAlpr, bool detect_region)//useless
     {
       nativeAlpr->setDetectRegion(detect_region);
     }

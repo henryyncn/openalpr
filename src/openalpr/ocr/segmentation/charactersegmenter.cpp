@@ -101,31 +101,31 @@ namespace alpr
 
         HistogramVertical vertHistogram(pipeline_data->thresholds[i], histogramMask);
 
-//        if (this->config->debugCharSegmenter)
-//        {
-//          Mat histoCopy(vertHistogram.histoImg.size(), vertHistogram.histoImg.type());
-//          //vertHistogram.copyTo(histoCopy);
-//          cvtColor(vertHistogram.histoImg, histoCopy, CV_GRAY2RGB);
-//
-//          string label = "threshold: " + toString(i);
-//          allHistograms.push_back(addLabel(histoCopy, label));
-//          
-//          std::cout << histoCopy.cols << " x " << histoCopy.rows << std::endl;
-//        }
+       if (this->config->debugCharSegmenter)
+       {
+         Mat histoCopy(vertHistogram.histoImg.size(), vertHistogram.histoImg.type());
+         //vertHistogram.copyTo(histoCopy);
+         cvtColor(vertHistogram.histoImg, histoCopy, CV_GRAY2RGB);
+
+         string label = "threshold: " + toString(i);
+         allHistograms.push_back(addLabel(histoCopy, label));
+         
+         std::cout << histoCopy.cols << " x " << histoCopy.rows << std::endl;
+       }
 
         float score = 0;
         vector<Rect> charBoxes = getHistogramBoxes(vertHistogram, avgCharWidth, avgCharHeight, &score);
 
-//        if (this->config->debugCharSegmenter)
-//        {
-//          for (unsigned int cboxIdx = 0; cboxIdx < charBoxes.size(); cboxIdx++)
-//          {
-//            rectangle(allHistograms[i], charBoxes[cboxIdx], Scalar(0, 255, 0));
-//          }
-//
-//          Mat histDashboard = drawImageDashboard(allHistograms, allHistograms[0].type(), 1);
-//          displayImage(config, "Char seg histograms", histDashboard);
-//        }
+       if (this->config->debugCharSegmenter)
+       {
+         for (unsigned int cboxIdx = 0; cboxIdx < charBoxes.size(); cboxIdx++)
+         {
+           rectangle(allHistograms[i], charBoxes[cboxIdx], Scalar(0, 255, 0));
+         }
+
+         Mat histDashboard = drawImageDashboard(allHistograms, allHistograms[0].type(), 1);
+         displayImage(config, "Char seg histograms", histDashboard);
+       }
 
         for (unsigned int z = 0; z < charBoxes.size(); z++)
           lineBoxes.push_back(charBoxes[z]);

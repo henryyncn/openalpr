@@ -46,7 +46,7 @@ namespace alpr
     tesseract.Init(config->getTessdataPrefix().c_str(), config->ocrLanguage.c_str() 	);
     tesseract.SetVariable("save_blob_choices", "T");
     tesseract.SetVariable("debug_file", "/dev/null");
-    tesseract.SetPageSegMode(PSM_SINGLE_CHAR);
+    tesseract.SetPageSegMode(PSM_SINGLE_CHAR);//单字符模式
   }
 
   TesseractOcr::~TesseractOcr()
@@ -62,7 +62,7 @@ namespace alpr
     
     for (unsigned int i = 0; i < pipeline_data->thresholds.size(); i++)
     {
-      // Make it black text on white background
+      // Make it black text on white background处理成白底黑字
       bitwise_not(pipeline_data->thresholds[i], pipeline_data->thresholds[i]);
       tesseract.SetImage((uchar*) pipeline_data->thresholds[i].data, 
                           pipeline_data->thresholds[i].size().width, pipeline_data->thresholds[i].size().height, 

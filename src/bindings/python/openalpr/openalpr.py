@@ -173,8 +173,8 @@ class Alpr:
     def recognize_ndarray(self, ndarray):
         """
         This causes OpenALPR to attempt to recognize an image passed in as a numpy array.
-
-        :param ndarray: numpy.array as used in cv2 module
+        重要函数，传入np.array类型的车牌图像。eg.  ndarray = img[y:y+height, x:x+width]
+        :param ndarray: numpy.array as used in cv2 module（车牌图像）
         :return: An OpenALPR analysis in the form of a response dictionary
         """
         if self._recognize_raw_image_func is None:
@@ -187,6 +187,8 @@ class Alpr:
         response_obj = json.loads(json_data)
         self._free_json_mem_func(ctypes.c_void_p(ptr))
         return response_obj
+
+    
 
     def get_version(self):
         """
