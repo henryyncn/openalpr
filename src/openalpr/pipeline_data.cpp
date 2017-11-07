@@ -50,5 +50,6 @@ namespace alpr
     this->plate_inverted = false;
     this->disqualified = false;
     this->disqualify_reason = "";
+    this->need_rotate = false;
   }
 }

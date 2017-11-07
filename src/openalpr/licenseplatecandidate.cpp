@@ -44,7 +44,7 @@ namespace alpr
   void LicensePlateCandidate::recognize()
   {
     //TODO: 编写函数isMultiline()
-    pipeline_data->isMultiline = config->multiline;
+    //pipeline_data->isMultiline = config->multiline;
 
 
     Rect expandedRegion = this->pipeline_data->regionOfInterest;

@@ -49,6 +49,7 @@ namespace alpr
 
       // Outputs
       bool plate_inverted;
+      bool need_rotate;
 
       std::string region_code;
       float region_confidence;

@@ -188,7 +188,16 @@ class Alpr:
         self._free_json_mem_func(ctypes.c_void_p(ptr))
         return response_obj
 
-    
+    def recognize_plate(self, img_array):
+        #self.set_top_n(1)
+        json_results = self.recognize_ndarray(img_array)
+        results_list = json_results['results']
+        if len(results_list) == 0:
+            raise RuntimeError("OpenALPR can't recognize this License Plate!")
+        single_result = results_list[0]
+        response = {'Plate':single_result['plate'], 'Confidence':single_result['confidence']}
+        return response
+        
 
     def get_version(self):
         """

@@ -89,6 +89,12 @@ TEST_CASE( "Unicode tests", "[Regex]" ) {
   
   REQUIRE( rule2.match("십万口1234") == true);
   REQUIRE( rule2.match("팔万口1234") == true);
+
+  RegexRule rule3("cn", "[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]@####[A-HJ-NP-Z0-9挂]",
+                  "[A-HJ-NP-Z]", "[A-HJ-NP-Z0-9]");
+  REQUIRE(rule3.match("粤BWU28挂") == true);
+  REQUIRE(rule3.match("粤BAT817") == true);
+
 }
 
 

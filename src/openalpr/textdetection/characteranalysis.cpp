@@ -196,6 +196,13 @@ namespace alpr
 
     }
 
+    if (pipeline_data->textLines.size() > 1)
+    {
+      pipeline_data->isMultiline = true;
+    } else {
+      pipeline_data->isMultiline = false;
+    }
+
 
     if (pipeline_data->textLines.size() > 0)
     {
@@ -203,13 +210,16 @@ namespace alpr
       int charSegmentCount = this->bestContours.getGoodIndicesCount();//字符数
       if (charSegmentCount == 1)
         confidenceDrainers += 91;
-      else if (charSegmentCount < 5)
-        confidenceDrainers += (5 - charSegmentCount) * 10;
+      else if (charSegmentCount < 3)
+        confidenceDrainers += (3 - charSegmentCount) * 10;
 
       // Use the angle for the first line -- assume they'll always be parallel(平行) for multi-line plates
       int absangle = abs(pipeline_data->textLines[0].topLine.angle);
-      if (absangle > config->maxPlateAngleDegrees)
-        confidenceDrainers += 91;
+      if (absangle > config->maxPlateAngleDegrees) 
+      {
+        //confidenceDrainers += 91;
+        pipeline_data->need_rotate = true;
+      }
       else if (absangle > 1)
         confidenceDrainers += absangle;
 

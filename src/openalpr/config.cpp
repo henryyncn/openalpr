@@ -208,7 +208,7 @@ namespace alpr
     
     prewarp = getString(ini, defaultIni, "", "prewarp", "");
             
-    maxPlateAngleDegrees = getInt(ini, defaultIni, "", "max_plate_angle_degrees", 15);
+    maxPlateAngleDegrees = getInt(ini, defaultIni, "", "max_plate_angle_degrees", 5);
 
 
     ocrImagePercent = getFloat(ini, defaultIni, "", "ocr_img_size_percent", 100);
